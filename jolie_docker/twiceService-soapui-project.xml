@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="95bdbf68-0ba7-4c71-8b49-ff768a69f615" activeEnvironment="Default" name="twiceService" resourceRoot="" soapui-version="5.4.0-EB" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="bbd85c69-6fc8-4860-bdbf-6e7d77e79c0f" wsaVersion="NONE" name="TwiceServiceSOAPBinding" type="wsdl" bindingName="{soseng.wsdl}TwiceServiceSOAPBinding" soapVersion="1_1" anonymous="optional" definition="/home/tac/Projects/CamundaJolieSample/TwiceService/TwiceService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/tac/Projects/CamundaJolieSample/TwiceService/TwiceService.wsdl"><con:part><con:url>file:/home/tac/Projects/CamundaJolieSample/TwiceService/TwiceService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="soseng.wsdl" xmlns:xsd1="soseng.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="soseng.wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema targetNamespace="soseng.xsd" xmlns:sch="soseng.xsd">
+      <xs:element name="twice">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="a" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="b" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="twiceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="a" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="b" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="Message">
+    <wsdl:part name="body" element="xsd1:twiceResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="TwiceService">
+    <wsdl:operation name="twice">
+      <wsdl:input message="tns:Message"/>
+      <wsdl:output message="tns:Message"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TwiceServiceSOAPBinding" type="tns:TwiceService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="twice">
+      <soap:operation soapAction="twice" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TwiceServiceService">
+    <wsdl:port name="TwiceServiceServicePort" binding="tns:TwiceServiceSOAPBinding">
+      <soap:address location="http://localhost:8000"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8000</con:endpoint></con:endpoints><con:operation id="2b17063a-697c-4ad1-bdf9-f1b10daf7a35" isOneWay="false" action="twice" name="twice" bindingOperationName="twice" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b045a57e-223f-40b1-9937-e6ad060789ef" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sos="soseng.xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sos:twiceResponse>
+         <a>1</a>
+         <b>2</b>
+      </sos:twiceResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="twice"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
